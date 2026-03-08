@@ -79,3 +79,27 @@ function toggleCart() {
 
 // تشغيل الدالة عند تحميل الصفحة
 displayProducts();
+// تعديل طريقة عرض المنتجات لتتوافق مع Bootstrap
+function displayProducts() {
+    const list = document.getElementById('product-list');
+    list.innerHTML = "";
+    // إضافة كلاس row الخاص بـ Bootstrap
+    list.className = "row g-4"; 
+    
+    products.forEach(p => {
+        list.innerHTML += `
+            <div class="col-12 col-md-6 col-lg-3"> <div class="product-card">
+                    <div class="product-image">
+                        <span class="category-tag">${p.category}</span>
+                        <img src="${p.img}" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3>${p.name}</h3>
+                        <p class="price">${p.price} ج.م</p>
+                        <button class="add-btn" onclick="addToCart(${p.id})">إضافة للسلة</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
