@@ -1,0 +1,148 @@
+/* الألوان والخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --accent: #fbbf24;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+body { background: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+.container { width: 92%; max-width: 1200px; margin: auto; }
+
+/* Header */
+header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.nav-bar { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 26px; font-weight: 800; color: var(--primary); cursor: default; }
+.logo span { color: var(--accent); }
+.cart-icon { position: relative; cursor: pointer; font-size: 24px; transition: 0.3s; }
+.cart-icon:hover { color: var(--primary); }
+#cart-count { position: absolute; top: -10px; right: -10px; background: var(--primary); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+/* Hero Section - تم حل مشكلة التداخل هنا */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200');
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
+}
+.hero-content h1 { font-size: 3.2rem; margin-bottom: 30px; font-weight: 800; line-height: 1.2; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 45px; max-width: 750px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.9); }
+.btn { background: var(--primary); color: white; padding: 14px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; display: inline-block; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+.btn:hover { background: #1d4ed8; transform: translateY(-3px); }
+
+/* Products Grid */
+.products { padding: 80px 0; }
+.section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; position: relative; }
+.section-title::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; }
+
+.product-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid rgba(0,0,0,0.03); }
+.product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.product-image { height: 260px; position: relative; overflow: hidden; }
+.product-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.product-card:hover .product-image img { transform: scale(1.08); }
+.category-tag { position: absolute; top: 12px; right: 12px; background: var(--primary); color: white; padding: 3px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 5; }
+.product-info { padding: 25px; text-align: center; }
+.price { color: var(--primary); font-weight: 800; font-size: 1.4rem; margin: 12px 0; display: block; }
+.add-btn { background: var(--dark); color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+.add-btn:hover { background: var(--primary); }
+
+/* Cart Sidebar */
+.cart-sidebar { position: fixed; top: 0; left: -100%; width: 380px; height: 100%; background: white; z-index: 2000; transition: 0.5s cubic-bezier(0.7, 0, 0.3, 1); padding: 30px; box-shadow: 10px 0 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+.cart-sidebar.active { left: 0; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 20px; }
+.cart-items { flex: 1; overflow-y: auto; }
+.cart-item { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
+.cart-footer { padding-top: 25px; border-top: 2px solid #f1f5f9; }
+.checkout-btn { background: var(--primary); color: white; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 15px; }
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .cart-sidebar { width: 100%; left: -100%; }
+}/* --- Header & Navigation Fix --- */
+header { 
+    background: white; 
+    padding: 10px 0; /* تقليل البادنج لجعل الهيدر أنحف وأشيك */
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08); 
+}
+
+.nav-bar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo { 
+    font-size: 24px; 
+    font-weight: 800; 
+    color: var(--primary); 
+    cursor: pointer;
+}
+
+.logo span { color: var(--accent); }
+
+/* الحل النهائي لمشكلة النقط والكلام اللي تحت بعضه */
+.nav-links { 
+    display: flex; 
+    list-style: none; /* حذف النقط السوداء تماماً */
+    gap: 25px;       /* مسافة بين الكلمات */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline-block; /* التأكد إنهم بجانب بعض */
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--dark); 
+    font-weight: 700; 
+    font-size: 16px;
+    transition: 0.3s;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* حركة شيك تحت الكلام عند الوقوف عليه بالماوس */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background-color: var(--primary);
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.cart-icon { 
+    position: relative; 
+    cursor: pointer; 
+    font-size: 22px; 
+    color: var(--dark);
+}
+
+#cart-count { 
+    position: absolute; 
+    top: -8px; 
+    right: -10px; 
+    background: var(--primary); 
+    color: white; 
+    border-radius: 50%; 
+    width: 18px; 
+    height: 18px; 
+    font-size: 11px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
